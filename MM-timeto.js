@@ -30,8 +30,9 @@ Module.register("MM-timeto",{
 
 		var brushTeeth = moment().startOf('day').add(21, 'hour')
 		let morningBrushTeeth = moment().startOf('day').add(7, 'hour').add(30,'minute')
-		let pyjamas = moment().startOf('day').add(21, 'hour').add(30,'minute')
-		let bed = moment().startOf('day').add(22, 'hour')
+		let pyjamas = moment().startOf('day').add(21, 'hour').add(20,'minute')
+		let reading = moment().startOf('day').add(21, 'hour').add(40,'minute')
+		let bed = moment().startOf('day').add(22, 'hour').add(20,'minute')
 		let wakyWaky = moment().startOf('day').add(7, 'hour').add(30,'minute')
 		let dress =	moment().startOf('day').add(7, 'hour').add(45,'minute')
 		let brush =  moment().startOf('day').add(8, 'hour')
@@ -39,34 +40,39 @@ Module.register("MM-timeto",{
 		let homeTime = moment().startOf('day').add(18, 'hour')
 		let weekday = currentTime.format("E")
 		var img = new Image();
-		img.src = "./modules/timeto/public/question.svg";
+		let path = "./modules/MM-timeto/public/";
 
-		if (currentTime >= brushTeeth && currentTime  < pyjamas) {
-			img.src = "./modules/timeto/public/toothbrush.svg";
+		img.src = path + "question.svg";
+
+		if (currentTime >= brushTeeth && currentTime < pyjamas) {
+			img.src = path + "toothbrush.svg";
 		};
-		if (currentTime >= pyjamas && currentTime < bed) {
-			img.src = "./modules/timeto/public/pajamas.png";
+		if (currentTime >= pyjamas && currentTime < reading) {
+			img.src = path + "pajamas.png";
+		};
+		if (currentTime >= reading && currentTime < bed) {
+			img.src = path + "reading.png";
 		};
 		if (currentTime >= bed || currentTime  < wakyWaky) {
-			img.src = "./modules/timeto/public/bed.svg";
+			img.src = path + "bed.svg";
 		};
 		if (currentTime >= morningBrushTeeth &&  currentTime  < dress) {
-			img.src = "./modules/timeto/public/toothbrush.svg";
+			img.src = path + "toothbrush.svg";
 		}
 		if (currentTime >= dress && currentTime < brush) {
-			img.src = "./modules/timeto/public/shirt.svg";
+			img.src = path + "shirt.svg";
 		}
 		if (currentTime >= brush && currentTime < school) {
-			img.src = "./modules/timeto/public/brush.svg";
+			img.src = path + "brush.svg";
 		}
 		if (currentTime >= school && currentTime < homeTime) {
-			img.src = "./modules/timeto/public/backpack.svg";
+			img.src = path + "backpack.svg";
 		}
 		if (currentTime >= homeTime && currentTime < brushTeeth) {
-			img.src = "./modules/timeto/public/question.svg";
+			img.src = path + "question.svg";
 		}
 		if (weekday > 5 && currentTime < brushTeeth) {
-			img.src = "./modules/timeto/public/question.svg";
+			img.src = path + "question.svg";
 		};
 
 		img.onload = function() {
